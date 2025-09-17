@@ -1,0 +1,138 @@
+import java.util.Scanner;
+
+public class BinaryProject {
+
+    // ANSI Colors
+    public static final String RESET  = "\u001B[0m";
+    public static final String RED    = "\u001B[31m";
+    public static final String GREEN  = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE   = "\u001B[34m";
+    public static final String CYAN   = "\u001B[36m";
+    public static final String WHITE  = "\u001B[37m";
+    public static final String PURPLE = "\u001B[35m";
+
+    // Convert binary string to decimal
+    public static int binaryToDecimal(String bin) {
+        return Integer.parseInt(bin, 2);
+    }
+
+    // Convert decimal to binary string
+    public static String decimalToBinary(int num) {
+        return Integer.toBinaryString(num);
+    }
+
+    // Check if input is a valid binary number
+    public static boolean isValidBinary(String bin) {
+        return bin.matches("[01]+");
+    }
+
+    // Get valid binary input
+    public static String getBinaryInput(Scanner sc, String message) {
+        String bin;
+        while (true) {
+            System.out.print(CYAN + message + RESET);
+            bin = sc.next();
+            if (isValidBinary(bin)) {
+                return bin;
+            } else {
+                System.out.println(RED + "❌ Invalid input! Only 0s and 1s allowed." + RESET);
+            }
+        }
+    }
+
+    // Get valid integer input
+    public static int getValidInt(Scanner sc, String message) {
+        while (true) {
+            try {
+                System.out.print(CYAN + message + RESET);
+                return Integer.parseInt(sc.next());
+            } catch (Exception e) {
+                System.out.println(RED + "❌ Invalid input! Please enter a number." + RESET);
+                sc.nextLine(); // clear buffer
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        String again;
+
+        do {
+            System.out.println(PURPLE + "\n======================================" + RESET);
+            System.out.println(YELLOW + "        🖥️  BINARY CALCULATOR 🖥 " + RESET);
+            System.out.println(PURPLE + "======================================" + RESET);
+
+            System.out.println(BLUE + "1." + WHITE + " Addition (Multiple Binaries)");
+            System.out.println(BLUE + "2." + WHITE + " Subtraction (2 binaries)");
+            System.out.println(BLUE + "3." + WHITE + " Multiplication (2 binaries)");
+            System.out.println(BLUE + "4." + WHITE + " Division (2 binaries)");
+            System.out.println(BLUE + "5." + WHITE + " Exit");
+            System.out.println(PURPLE + "--------------------------------------" + RESET);
+
+            choice = getValidInt(sc, "Enter your choice: ");
+
+            if (choice == 1) {
+                // Multiple Addition
+                int count = getValidInt(sc, "How many binary numbers do you want to add? ");
+                int sum = 0;
+
+                for (int i = 1; i <= count; i++) {
+                    String bin = getBinaryInput(sc, "Enter binary number " + i + ": ");
+                    sum += binaryToDecimal(bin);
+                }
+
+                System.out.println(GREEN + "\n✅ Result in Decimal: " + sum + RESET);
+                System.out.println(GREEN + "✅ Result in Binary: " + decimalToBinary(sum) + RESET);
+
+                System.out.print(YELLOW + "\nDo you want to compute again? (Y/N): " + RESET);
+                again = sc.next();
+                if (again.equalsIgnoreCase("N")) {
+                    choice = 5;
+                }
+
+            } else if (choice >= 2 && choice <= 4) {
+                // Other operations
+                String bin1 = getBinaryInput(sc, "Enter first binary number: ");
+                String bin2 = getBinaryInput(sc, "Enter second binary number: ");
+
+                int dec1 = binaryToDecimal(bin1);
+                int dec2 = binaryToDecimal(bin2);
+                int result = 0;
+
+                switch (choice) {
+                    case 2:
+                        result = dec1 - dec2;
+                        break;
+                    case 3:
+                        result = dec1 * dec2;
+                        break;
+                    case 4:
+                        if (dec2 == 0) {
+                            System.out.println(RED + "❌ Error: Division by zero not allowed." + RESET);
+                            continue;
+                        }
+                        result = dec1 / dec2;
+                        break;
+                }
+
+                System.out.println(GREEN + "\n✅ Result in Decimal: " + result + RESET);
+                System.out.println(GREEN + "✅ Result in Binary: " + decimalToBinary(result) + RESET);
+
+                System.out.print(YELLOW + "\nDo you want to compute again? (Y/N): " + RESET);
+                again = sc.next();
+                if (again.equalsIgnoreCase("N")) {
+                    choice = 5;
+                }
+
+            } else if (choice != 5) {
+                System.out.println(RED + "❌ Invalid choice! Please enter a number between 1 and 5." + RESET);
+            }
+
+        } while (choice != 5);
+
+        System.out.println(PURPLE + "\n✨ Thank you for using Binary Calculator! ✨" + RESET);
+        sc.close();
+    }
+}
