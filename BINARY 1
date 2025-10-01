@@ -12,22 +12,22 @@ public class BinaryProject {
     public static final String WHITE  = "\u001B[37m";
     public static final String PURPLE = "\u001B[35m";
 
-    // Convert binary string to decimal
+    // Here it converts binary string to decimal
     public static int binaryToDecimal(String bin) {
         return Integer.parseInt(bin, 2);
     }
 
-    // Convert decimal to binary string
+    // Here naman it convert decimal to binary string
     public static String decimalToBinary(int num) {
         return Integer.toBinaryString(num);
     }
 
-    // Check if input is a valid binary number
+    // Here is where it checks if input is a valid binary number
     public static boolean isValidBinary(String bin) {
         return bin.matches("[01]+");
     }
 
-    // Get valid binary input
+    // Get valid binary input (Na valid na)
     public static String getBinaryInput(Scanner sc, String message) {
         String bin;
         while (true) {
@@ -41,7 +41,7 @@ public class BinaryProject {
         }
     }
 
-    // Get valid integer input
+    // Get valid integer input (From the Menu Like if the user correctly chose from 1-5)
     public static int getValidInt(Scanner sc, String message) {
         while (true) {
             try {
@@ -91,6 +91,8 @@ public class BinaryProject {
                 if (again.equalsIgnoreCase("N")) {
                     choice = 5;
                 }
+
+            // Here is the Subtraction to Division 
 
             } else if (choice >= 2 && choice <= 4) {
                 // Other operations
