@@ -124,8 +124,8 @@ public class BinaryProject {
 
                         System.out.println(GREEN + "\n Quotient in Decimal: " + quotient + RESET);
                         System.out.println(GREEN + " Quotient in Binary: " + decimalToBinary(quotient) + RESET);
-                        System.out.println(YELLOW + "🔹 Remainder in Decimal: " + remainder + RESET);
-                        System.out.println(YELLOW + "🔹 Remainder in Binary: " + decimalToBinary(remainder) + RESET);
+                        System.out.println(YELLOW + " Remainder in Decimal: " + remainder + RESET);
+                        System.out.println(YELLOW + " Remainder in Binary: " + decimalToBinary(remainder) + RESET);
                         break;
                 }
 
@@ -141,7 +141,7 @@ public class BinaryProject {
 
         } while (choice != 5);
 
-        System.out.println(PURPLE + "\n✨ Thank you for using Binary Calculator! ✨" + RESET);
+        System.out.println(PURPLE + "\n✨ Thank you for using Binary Calculator of our Group! ✨" + RESET);
         sc.close();
     }
 }
