@@ -83,8 +83,8 @@ public class BinaryProject {
                     sum += binaryToDecimal(bin);
                 }
 
-                System.out.println(GREEN + "\n✅ Result in Decimal: " + sum + RESET);
-                System.out.println(GREEN + "✅ Result in Binary: " + decimalToBinary(sum) + RESET);
+                System.out.println(GREEN + "\n Result in Decimal: " + sum + RESET);
+                System.out.println(GREEN + " Result in Binary: " + decimalToBinary(sum) + RESET);
 
                 System.out.print(YELLOW + "\nDo you want to compute again? (Y/N): " + RESET);
                 again = sc.next();
@@ -106,21 +106,28 @@ public class BinaryProject {
                 switch (choice) {
                     case 2:
                         result = dec1 - dec2;
+                        System.out.println(GREEN + "\n Result in Decimal: " + result + RESET);
+                        System.out.println(GREEN + " Result in Binary: " + decimalToBinary(result) + RESET);
                         break;
                     case 3:
                         result = dec1 * dec2;
+                        System.out.println(GREEN + "\n Result in Decimal: " + result + RESET);
+                        System.out.println(GREEN + " Result in Binary: " + decimalToBinary(result) + RESET);
                         break;
                     case 4:
                         if (dec2 == 0) {
                             System.out.println(RED + "❌ Error: Division by zero not allowed." + RESET);
                             continue;
                         }
-                        result = dec1 / dec2;
+                        int quotient = dec1 / dec2;
+                        int remainder = dec1 % dec2;
+
+                        System.out.println(GREEN + "\n Quotient in Decimal: " + quotient + RESET);
+                        System.out.println(GREEN + " Quotient in Binary: " + decimalToBinary(quotient) + RESET);
+                        System.out.println(YELLOW + "🔹 Remainder in Decimal: " + remainder + RESET);
+                        System.out.println(YELLOW + "🔹 Remainder in Binary: " + decimalToBinary(remainder) + RESET);
                         break;
                 }
-
-                System.out.println(GREEN + "\n✅ Result in Decimal: " + result + RESET);
-                System.out.println(GREEN + "✅ Result in Binary: " + decimalToBinary(result) + RESET);
 
                 System.out.print(YELLOW + "\nDo you want to compute again? (Y/N): " + RESET);
                 again = sc.next();
